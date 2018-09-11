@@ -16,3 +16,11 @@ def k_fold_cross_validation(sgd_clf, X_train, y_train_nb):
         y_pred = clone_clf.predict(X_test_folds)
         n_correct = sum(y_pred == y_test_folds)
         print(n_correct / len(y_pred))
+
+from sklearn.base import BaseEstimator
+import numpy as np
+class NeverNbClassifier(BaseEstimator):
+    def fit(self, X, y=None):
+        pass
+    def predict(self, X):
+        return np.zeros((len(X), 1), dtype=bool)

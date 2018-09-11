@@ -26,8 +26,12 @@ sgd_clf.fit(X_train, y_train_5)
 #print(sgd_clf.predict([X[0]]))
 #print(sgd_clf.predict([X[36000]]))
 
-from cross_validation import k_fold_cross_validation
-k_fold_cross_validation(sgd_clf, X_train, y_train_5)
+#from cross_validation import k_fold_cross_validation
+#k_fold_cross_validation(sgd_clf, X_train, y_train_5)
 
 from sklearn.model_selection import cross_val_score
-print(cross_val_score(sgd_clf, X_train, y_train_5, cv=3, scoring='accuracy'))
+#print(cross_val_score(sgd_clf, X_train, y_train_5, cv=3, scoring='accuracy'))
+
+from cross_validation import NeverNbClassifier
+never_5_clf = NeverNbClassifier()
+print(cross_val_score(never_5_clf, X_train, y_train_5, cv=3, scoring='accuracy'))
