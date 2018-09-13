@@ -32,6 +32,12 @@ sgd_clf.fit(X_train, y_train_5)
 from sklearn.model_selection import cross_val_score
 #print(cross_val_score(sgd_clf, X_train, y_train_5, cv=3, scoring='accuracy'))
 
-from cross_validation import NeverNbClassifier
-never_5_clf = NeverNbClassifier()
-print(cross_val_score(never_5_clf, X_train, y_train_5, cv=3, scoring='accuracy'))
+#from cross_validation import NeverNbClassifier
+#never_5_clf = NeverNbClassifier()
+#print(cross_val_score(never_5_clf, X_train, y_train_5, cv=3, scoring='accuracy'))
+
+# Using Confusing Matrix to evaluate the performance of a classifier
+from sklearn.model_selection import cross_val_predict
+y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=3)
+from sklearn.metrics import confusion_matrix
+print(confusion_matrix(y_train_5, y_train_pred))
